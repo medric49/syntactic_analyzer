@@ -1,3 +1,5 @@
+# Author: Djeafea Sonwa Medric Bruel
+
 import string
 import time
 

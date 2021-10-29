@@ -1,3 +1,5 @@
+# Author: Djeafea Sonwa Medric Bruel
+
 from nltk.corpus import treebank
 from nltk import Production
 from nltk import treetransforms
