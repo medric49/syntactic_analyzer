@@ -25,10 +25,10 @@ def manage_unknown_words(sentences, voc):
 if __name__ == '__main__':
     dev_data = pd.read_csv('data/cola_public/tokenized/in_domain_dev.tsv', header=None, delimiter='\t')
     dev_data = dev_data[~dev_data[2].isna()].reset_index(drop=True)
-    dev_sentences = dev_data[3].to_list()[75]
+    dev_sentences = dev_data[3].to_list()[:75]
 
     productions, lengths = get_treebank_productions()
-    for dismiss_length in range(10000, 0, -4000):
+    for dismiss_length in range(20000, 10000, -4000):
         grammar, voc = get_treebank_grammar(productions, dismiss_length)
         parser = ViterbiParser(grammar)
 
@@ -43,7 +43,7 @@ if __name__ == '__main__':
             parses = parser.parse_all(sentence)
             tac = time.time() - tic
 
-            observation = [length, tac, len(parses)]
+            observation = [str(length), str(tac), str(len(parses))]
             observations.append(observation)
             print(observation)
 
